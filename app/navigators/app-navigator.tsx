@@ -8,8 +8,16 @@ import React from "react"
 import { useColorScheme } from "react-native"
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { WelcomeScreen, DemoScreen, DemoListScreen } from "../screens"
+import {
+  WelcomeScreen,
+  DemoScreen,
+  DemoListScreen,
+  HomeScreen,
+  RestaurantScreen,
+  OrderDeliveryScreen,
+} from "../screens"
 import { navigationRef } from "./navigation-utilities"
+import Tabs from "../navigation/tabs"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -27,6 +35,9 @@ export type NavigatorParamList = {
   welcome: undefined
   demo: undefined
   demoList: undefined
+  Home: undefined
+  Restaurant: undefined
+  OrderDelivery: undefined
 }
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
@@ -38,11 +49,11 @@ const AppStack = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="welcome"
+      initialRouteName="Home"
     >
-      <Stack.Screen name="welcome" component={WelcomeScreen} />
-      <Stack.Screen name="demo" component={DemoScreen} />
-      <Stack.Screen name="demoList" component={DemoListScreen} />
+      <Stack.Screen name="Home" component={Tabs} />
+      <Stack.Screen name="Restaurant" component={RestaurantScreen} />
+      <Stack.Screen name="OrderDelivery" component={OrderDeliveryScreen} />
     </Stack.Navigator>
   )
 }
